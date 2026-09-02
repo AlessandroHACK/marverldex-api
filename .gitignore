@@ -3,6 +3,9 @@
 /node_modules
 /build
 
+# MongoDB local data
+/mongo/data/db
+
 # Logs
 logs
 *.log
