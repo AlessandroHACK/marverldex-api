@@ -31,12 +31,20 @@
                     buscar y filtrar héroes y villanos.
                 </p>
 
-                <ul class="badges" aria-label="Stack tecnológico">
+     <ul class="badges" aria-label="Stack tecnológico">
                     <li class="badge">NestJS</li>
                     <li class="badge">MongoDB</li>
                     <li class="badge">TypeScript</li>
                     <li class="badge">REST API</li>
                 </ul>
+                <form class="apiform" onsubmit="return false;">
+                    <label>http://localhost:3000/api/v1/</label>
+                    <input id="endpoint" value="characters">
+                    <button onclick="fetchAPI()">Enviar</button>
+                </form>
+
+                <pre id="result"></pre>
+
             </div>
 
 
@@ -48,5 +56,32 @@
         </footer>
     </main>
 </body>
+<script>
+    async function fetchAPI() {
+        const resultEl = document.getElementById('result'); // get space result
+        const endpoint = document.getElementById('endpoint').value.trim(); //get input value
+        const url = `http://localhost:3000/api/v1/${endpoint}`;
+
+        try {
+            const res = await fetch(url, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!res.ok) {
+                resultEl.textContent = `Error ${res.status}: ${res.statusText}`;
+                return [];
+            }
+
+            const json = await res.json();
+            resultEl.textContent = JSON.stringify(json, null, 2);
+            return json;
+        } catch (err) {
+            resultEl.textContent = `Error de red: ${err.message}`;
+            return [];
+        }
+    }
+</script>
 
 </html>
