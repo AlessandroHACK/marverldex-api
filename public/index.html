@@ -31,7 +31,7 @@
                     buscar y filtrar héroes y villanos.
                 </p>
 
-     <ul class="badges" aria-label="Stack tecnológico">
+                <ul class="badges" aria-label="Stack tecnológico">
                     <li class="badge">NestJS</li>
                     <li class="badge">MongoDB</li>
                     <li class="badge">TypeScript</li>
@@ -42,6 +42,16 @@
                     <input id="endpoint" value="characters">
                     <button onclick="fetchAPI()">Enviar</button>
                 </form>
+
+                <div class="examples">
+                    <p class="examples-title">Intenta con esto:</p>
+                    <div class="examples-list">
+                        <button type="button" class="chip" onclick="useExample('characters/6a91cb639b8ed15fc2a8b62f')">6a91cb639b8ed15fc2a8b62f</button>
+                        <button type="button" class="chip" onclick="useExample('characters/15')">15</button>
+                        <button type="button" class="chip" onclick="useExample('characters/ant-man')">ant-man</button>
+                        <button type="button" class="chip" onclick="useExample('characters?&amp;limit=10&amp;offset=10')">?&amp;limit=10&amp;offset=10</button>
+                    </div>
+                </div>
 
                 <pre id="result"></pre>
 
@@ -57,6 +67,11 @@
     </main>
 </body>
 <script>
+    function useExample(value) {
+        document.getElementById('endpoint').value = value; //update  endpoint
+        fetchAPI();
+    }
+
     async function fetchAPI() {
         const resultEl = document.getElementById('result'); // get space result
         const endpoint = document.getElementById('endpoint').value.trim(); //get input value
