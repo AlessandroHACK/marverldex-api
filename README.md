@@ -25,4 +25,19 @@ npm i -g @nestjs/cli
 ```
 docker-compose up -d
 ```
+5. Clonar el archivo _.env.template_ y renombrar la copia a _.env_
+
+6. Llenar las variables de entorno definidas en _.env_
+
+7. Ejecutar la app en dev
+
+```
+npm run start:dev
+```
+
+8. Recontruir la base de datos mediante el seed
+
+``` 
+http://localhost:3000/api/v1/seed
+```
 

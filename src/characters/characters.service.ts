@@ -16,7 +16,7 @@ export class CharactersService {
   constructor(
     @InjectModel(Character.name)
     private readonly characterModel: Model<Character>,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService //add config services .env
   ) { }
 
   async create(createCharacterDto: CreateCharacterDto) {

@@ -7,13 +7,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CharactersModule } from './characters/characters.module';
 import { SeedModule } from './seed/seed.module';
 import { configuration } from './config/env.config';
+import { JoiValidationSchema } from './config/joi.validation';
 
 @Module({
   imports: [
     // Loads .env into process.env. isGlobal makes ConfigService available everywhere.
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [configuration] //load env configuration
+      load: [configuration], //load env configuration
+      validationSchema: JoiValidationSchema
     }),
 
     // Serves static files (from the frontend build) from /public.
