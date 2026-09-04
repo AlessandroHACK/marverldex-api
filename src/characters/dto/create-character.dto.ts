@@ -1,4 +1,4 @@
-import { IsArray, IsEnum, IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString, IsUrl, Min } from "class-validator";
+import { IsArray, IsEnum, IsInt, IsNotEmpty, IsNumber, IsOptional, IsPositive, IsString, Min } from "class-validator";
 import { CharacterAlignment, CharacterStatus } from "../schemas/character.schema";
 
 export class CreateCharacterDto {
@@ -25,10 +25,6 @@ export class CreateCharacterDto {
     @IsOptional()
     @IsString({ message: 'Invalid description' })
     description?: string;
-
-    @IsOptional()
-    @IsUrl({}, { message: 'Image must be a valid URL' })
-    image?: string;
 
     @IsOptional()
     @IsString({ message: 'Invalid publisher' })

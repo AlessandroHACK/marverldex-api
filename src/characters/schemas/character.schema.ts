@@ -35,9 +35,6 @@ export class Character {
     @Prop({ trim: true })
     description: string;
 
-    @Prop({ trim: true })
-    image: string;
-
     @Prop({ trim: true, default: 'Marvel Comics' })
     publisher: string;
 
